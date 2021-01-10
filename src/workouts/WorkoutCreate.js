@@ -8,15 +8,15 @@ const WorkoutCreate = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('hello')
-        fetch('http://localhost:4000/workout/log', {
+       
+        fetch('http://localhost:3000/workout/log', {
             method: 'POST',
             body: JSON.stringify({log: {description: description, definition: definition, result: result}}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
             })
-        }) .then((res) => res.json())
+        }).then((res) => res.json())
         .then((logData) => {
             console.log(logData);
             setDescription('');

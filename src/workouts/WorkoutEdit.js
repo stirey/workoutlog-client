@@ -7,14 +7,14 @@ const WorkoutEdit = (props) => {
     const [editRes, setEditRes] = useState(props.workoutToUpdate.result);
     const workoutUpdate = (event, workout) =>{
         event.preventDefault();
-        fetch(`http://localhost:4000/workout/log/${props.workoutToUpdate.id}`, {
+        fetch(`http://localhost:3000/workout/log/${props.workoutToUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({log: {description: editDesc, definition: editDef, result: editRes}}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
             })
-        }) .then((res) => {
+        }).then((res) => {
             props.fetchWorkouts();
             props.updateOff();
         })
